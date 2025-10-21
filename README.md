@@ -1,96 +1,89 @@
-# 🚀 HNG13 DevOps – Stage 0
+🚀 DevOps Stage 1 – Automated Web Server Deployment
+🧾 Project Overview
 
-### 👩‍💻 Author
-**Name:** Oluwayemisi Okunrounmu  
-**Slack Username:** @Yemisi  
-**Email:** [yemmmyc@hotmail.com](mailto:yemmmyc@hotmail.com)  
-**GitHub:** [Yemmmyc](https://github.com/Yemmmyc)
+This project automates the deployment of a custom HTML landing page using NGINX and Docker.
+It was completed as part of HNG13 DevOps Stage 1, demonstrating end-to-end CI/CD automation on a cloud instance (AWS EC2).
 
----
+⚙️ Deployment Script Highlights (deploy.sh)
 
-## 🌍 Live Deployment
-**Server IP:** [http://54.221.73.15/](http://54.221.73.15/)  
-**Platform:** AWS EC2 (Ubuntu 22.04 LTS)  
-**Deployed On:** October 21, 2025  
+Fully automated end-to-end setup
 
-> Successfully deployed using NGINX web server running on port **80**.
+Supports interactive prompts for user inputs
 
----
+Automatically handles container rebuilds
 
-## 🧩 Project Overview
-This project was completed as part of **HNG13 DevOps Stage 0**.  
-The goal was to deploy a live web server that hosts a custom webpage accessible from the internet.
+Built-in error handling (set -e and trap)
 
-### Objectives
-- ✅ Set up and manage a GitHub workflow  
-- ✅ Deploy and configure a live NGINX web server  
-- ✅ Serve a custom webpage on port 80  
-- ✅ Document, test, and automate the deployment process  
+Optional --cleanup flag for idempotent deployments
 
----
+Logs every deployment action for traceability
 
-## 🛠️ Technologies Used
-| Tool | Purpose |
-|------|----------|
-| **NGINX** | Web server |
-| **Docker** | Containerization |
-| **Bash** | Automation scripting |
-| **AWS EC2 (Ubuntu 22.04)** | Cloud hosting |
-| **Git & GitHub** | Version control |
+🧩 Key Features
 
----
+✅ Automated cloning and deployment from GitHub
+✅ Dynamic timestamped logging for each run
+✅ Built-in validation for Docker and NGINX
+✅ Health check confirmation before success message
+✅ Works on local Linux (WSL) and AWS EC2 Ubuntu
 
-## 📜 Deployment Script – `deploy.sh`
-This script automates the full deployment lifecycle:
+🖥️ How to Run Locally or on a Server
 
-- Clones the GitHub repository  
-- Builds and runs the Docker container  
-- Configures NGINX as a reverse proxy  
-- Handles SSH authentication  
-- Supports optional cleanup and error handling  
+Clone the repository:
 
-Run the script:
-```bash
+git clone https://github.com/Yemmmyc/hng-stage1-devops.git
+cd hng-stage1-devops
+
+
+Make the script executable:
+
+chmod +x deploy.sh
+
+
+Run deployment interactively:
+
 ./deploy.sh
-With cleanup option:
 
-bash
-Copy code
+
+To perform a clean redeploy:
+
 ./deploy.sh --cleanup
-🧾 Logs
-All deployment logs are saved in:
 
-deploy.log (latest run)
+📂 Logs
 
-deploy_YYYYMMDD_HHMMSS.log (timestamped)
+All actions are recorded in deploy.log
 
-These logs assist in auditing and troubleshooting deployments.
+Timestamped logs (deploy_YYYYMMDD_HHMMSS.log) are created for each run
 
-⚠️ Troubleshooting Guide
+Useful for debugging and audit tracking
+
+⚠️ Troubleshooting
 Issue	Possible Fix
-Port 80 already in use	Stop conflicting service → sudo fuser -k 80/tcp
-NGINX not serving custom page	Verify file exists: /var/www/html/index.html
-Docker/NGINX permission errors	Run script with sudo
-Repository changes not reflecting	Commit and push updates again
-
+Port 80 already in use	Run sudo fuser -k 80/tcp to free it
+NGINX not serving custom page	Verify /var/www/html/index.html exists
+Docker/NGINX permission errors	Run the script with sudo
+Repository changes not reflecting	Recommit and push updates before redeploy
 🧹 Optional Cleanup
-You can clean up all containers and images automatically:
 
-bash
-Copy code
+Use the cleanup flag to remove all containers and start fresh:
+
 ./deploy.sh --cleanup
-This ensures a clean, idempotent environment for re-deployment.
 
-🧑‍🏫 Author’s Note
-This project demonstrates key DevOps principles:
+📦 Deployment Info
 
-Automation – One-click deployment using deploy.sh
+Deployed on: AWS EC2 (Ubuntu 22.04 LTS)
 
-Reproducibility – Consistent results across environments
+Public URL: http://54.221.73.15/
 
-Documentation – Clear README and structured logs
+Deployed Date: October 21, 2025
 
-📨 Contact
-📧 Email: yemmmyc@hotmail.com
-🌐 GitHub: Yemmmyc
-🧠 Project Repository: HNG13 Stage 0 DevOps
+👨‍💻 Author
+
+Name: Oluwayemisi Okunrounmu
+Email: yemmmyc@hotmail.com
+
+GitHub: Yemmmyc
+
+🏁 Notes
+
+This project showcases practical DevOps fundamentals:
+automation, version control, containerization, and documentation.
