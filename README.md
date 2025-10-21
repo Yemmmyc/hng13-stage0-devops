@@ -1,89 +1,99 @@
-🚀 DevOps Stage 1 – Automated Web Server Deployment
-🧾 Project Overview
+# 🚀 HNG13 DevOps Stage 0 Project  
 
-This project automates the deployment of a custom HTML landing page using NGINX and Docker.
-It was completed as part of HNG13 DevOps Stage 1, demonstrating end-to-end CI/CD automation on a cloud instance (AWS EC2).
+[![Built with NGINX](https://img.shields.io/badge/Built%20with-NGINX-brightgreen?logo=nginx)](https://www.nginx.com)
+[![Deployed on AWS EC2](https://img.shields.io/badge/Deployed%20on-AWS%20EC2-orange?logo=amazon-aws)](https://aws.amazon.com/ec2/)
+[![Made with HTML](https://img.shields.io/badge/Page%20Type-HTML-blue?logo=html5)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![Status](https://img.shields.io/badge/Status-Live%20✅-success)](http://54.221.73.15/)
 
-⚙️ Deployment Script Highlights (deploy.sh)
+---
 
-Fully automated end-to-end setup
+## 📂 Project Structure  
 
-Supports interactive prompts for user inputs
+hng13-stage0-devops/
+├── index.html
+└── README.md
 
-Automatically handles container rebuilds
+yaml
+Copy code
 
-Built-in error handling (set -e and trap)
+---
 
-Optional --cleanup flag for idempotent deployments
+## 🌍 Overview  
 
-Logs every deployment action for traceability
+This repository was created as part of **HNG13 DevOps Stage 0**.  
+The task demonstrates fundamental DevOps skills — deploying and managing a live NGINX web server that serves a custom HTML page accessible from the internet.
 
-🧩 Key Features
+---
 
-✅ Automated cloning and deployment from GitHub
-✅ Dynamic timestamped logging for each run
-✅ Built-in validation for Docker and NGINX
-✅ Health check confirmation before success message
-✅ Works on local Linux (WSL) and AWS EC2 Ubuntu
+## 🧱 Project Details  
 
-🖥️ How to Run Locally or on a Server
+| Detail | Description |
+|--------|--------------|
+| 👩‍💻 **Name** | Oluwayemisi Okunrounmu |
+| 💬 **Slack Username** | @yemmmyc |
+| ☁️ **Platform** | AWS EC2 (Ubuntu 22.04 LTS) |
+| 🌐 **Server URL** | [http://54.221.73.15/](http://54.221.73.15/) |
+| 📅 **Deployed On** | October 21, 2025 |
 
-Clone the repository:
+---
 
-git clone https://github.com/Yemmmyc/hng-stage1-devops.git
-cd hng-stage1-devops
+## 🧩 Web Page Output  
 
+Welcome to DevOps Stage 0 – Oluwayemisi Okunrounmu (@yemmmyc)
+Successfully deployed on AWS EC2
+Deployed: October 21, 2025
 
-Make the script executable:
+yaml
+Copy code
 
-chmod +x deploy.sh
+---
 
+## ⚙️ Deployment Steps  
 
-Run deployment interactively:
+1. **Update System and Install NGINX**
+   ```bash
+   sudo apt update && sudo apt install -y nginx
+Replace Default NGINX Index Page
 
-./deploy.sh
+bash
+Copy code
+sudo nano /var/www/html/index.html
+Paste in the custom HTML:
 
+html
+Copy code
+<h1>Welcome to DevOps Stage 0 – Oluwayemisi Okunrounmu (@yemmmyc)</h1>
+<p>Successfully deployed on AWS EC2</p>
+<p>Deployed: October 21, 2025</p>
+Restart NGINX
 
-To perform a clean redeploy:
+bash
+Copy code
+sudo systemctl restart nginx
+Verify Deployment
+Visit http://54.221.73.15/ in a browser.
+You should see your custom message 🎉
 
-./deploy.sh --cleanup
+🧭 Validation Checklist
+✅ Port 80 is open and reachable
+✅ NGINX serves the custom index.html
+✅ Public IP displays the expected content
+✅ Server remains live for grading
 
-📂 Logs
+🧑‍🏫 Author’s Note
+This project demonstrates:
 
-All actions are recorded in deploy.log
+🔧 Hands-on server setup and deployment
 
-Timestamped logs (deploy_YYYYMMDD_HHMMSS.log) are created for each run
+⚙️ Configuration management with NGINX
 
-Useful for debugging and audit tracking
+🧠 Clear and professional documentation
 
-⚠️ Troubleshooting
-Issue	Possible Fix
-Port 80 already in use	Run sudo fuser -k 80/tcp to free it
-NGINX not serving custom page	Verify /var/www/html/index.html exists
-Docker/NGINX permission errors	Run the script with sudo
-Repository changes not reflecting	Recommit and push updates before redeploy
-🧹 Optional Cleanup
+📨 Contact
+👩‍💻 Name: Oluwayemisi Okunrounmu
+💬 Slack: @yemmmyc
+📧 Email: yemmmyc@hotmail.com
+🌐 GitHub: Yemmmyc
+🚀 Live URL: http://54.221.73.15/
 
-Use the cleanup flag to remove all containers and start fresh:
-
-./deploy.sh --cleanup
-
-📦 Deployment Info
-
-Deployed on: AWS EC2 (Ubuntu 22.04 LTS)
-
-Public URL: http://54.221.73.15/
-
-Deployed Date: October 21, 2025
-
-👨‍💻 Author
-
-Name: Oluwayemisi Okunrounmu
-Email: yemmmyc@hotmail.com
-
-GitHub: Yemmmyc
-
-🏁 Notes
-
-This project showcases practical DevOps fundamentals:
-automation, version control, containerization, and documentation.
+✅ Status: Successfully Deployed and Verified on AWS EC2 🎉
